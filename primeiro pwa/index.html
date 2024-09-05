@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Reservas</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/icons/icon-192x192.png">
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+        .then((registration) => {
+          console.log('SW registrado com sucesso:', registration);
+        })
+        .catch((error) => {
+          console.error('Falha ao registrar o SW:', error);
+        });
+      });
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Sistema de Reservas</h1>
+    <nav>
+      <a href="mailto:contato@reservas.com">Email</a> |
+      <a href="tel:+1234567890">Ligar</a> |
+      <a href="sms:+1234567890">Enviar SMS</a>
+    </nav>
+  </header>
+  <main>
+    <h2>Faça sua Reserva</h2>
+    <form id="reservation-form">
+      <label for="name">Nome:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="date">Data:</label>
+      <input type="date" id="date" name="date" required>
+
+      <label for="time">Hora:</label>
+      <input type="time" id="time" name="time" required>
+
+      <button type="submit">Reservar</button>
+    </form>
+    <p id="confirmation-message"></p>
+  </main>
+  <footer>
+    <p>&copy; 2024 Sistema de Reservas</p>
+  </footer>
+  <script src="/script.js"></script>
+</body>
+</html>
